@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:checked="true"
+            android:id="@+id/item_navigation_drawer_news"
+            android:icon="@drawable/ic_news_black_24dp"
+            android:title="Novedades" />
+        <item
+            android:id="@+id/item_navigation_drawer_tatuadores"
+            android:icon="@drawable/ic_tattoo_machine_26dp"
+            android:title="Artistas" />
+        <item
+            android:id="@+id/item_navigation_drawer_designs"
+            android:icon="@drawable/ic_brush_black_24dp"
+            android:title="Diseños" />
+        <item
+            android:id="@+id/item_navigation_drawer_info"
+            android:icon="@drawable/ic_info_black_24dp"
+            android:title="Información" />
+        <item
+            android:id="@+id/item_navigation_drawer_cita"
+            android:icon="@drawable/ic_calendar_plus_black_24dp"
+            android:title="Agenda una Cita" />
+    </group>
+
+    <item android:title="Help And Feedback">
+        <menu>
+            <item
+                android:id="@+id/item_navigation_drawer_settings"
+                android:icon="@mipmap/ic_launcher"
+                android:title="Settings" />
+            <item
+                android:id="@+id/item_navigation_drawer_help_and_feedback"
+                android:icon="@mipmap/ic_launcher"
+                android:title="Help and feedback" />
+        </menu>
+    </item>
+
+</menu>

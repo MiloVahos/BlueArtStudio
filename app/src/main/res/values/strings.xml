@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Blue Art Studio</string>
+    <string name="facebook_app_id">1075940125787726</string>
+
+    <!--Strings para Datos Tatuador activity-->
+    <string name="Nombre">Nombre: </string>
+    <string name="Apodo">Apodo: </string>
+    <string name="Origen">Lugar de origen: </string>
+    <string name="Estilo">Estilos: </string>
+    <string name="Descripcion">Descripción: </string>
+
+</resources>

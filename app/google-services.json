@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "78306971838",
+    "firebase_url": "https://blueartstudio-d36fc.firebaseio.com",
+    "project_id": "blueartstudio-d36fc",
+    "storage_bucket": "blueartstudio-d36fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78306971838:android:f5490619dd37f24d",
+        "android_client_info": {
+          "package_name": "com.raykgeneer.evilgeniuses.blueartstudio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78306971838-4n7n9dosooa6evbi5tij38appb6js4a1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.raykgeneer.evilgeniuses.blueartstudio",
+            "certificate_hash": "F739AB9E059FF36D357B35FE6E0B66EE50C3DE22"
+          }
+        },
+        {
+          "client_id": "78306971838-p9cgc6sjooqr51968fni57hu09gb2s0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9XUi7KO5wJhoq_hwhSiNHJZbVYIFag30"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78306971838-p9cgc6sjooqr51968fni57hu09gb2s0g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
