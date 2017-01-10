@@ -1,32 +1,43 @@
+//Ingeniero: Juan Camilo Peña Vahos
+//Fecha: 28/10/2016
+//Descripción: Actividad principal de la aplicación.
+//Proximamente:
+//Implementar un sistema de hashtag para busqueda al interior de la aplicación
+
 package com.raykgeneer.evilgeniuses.blueartstudio;
 
+//Librerias
 import android.content.Intent;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     //Declaración de Componentes del Layout
-    private DrawerLayout drawerLayout;
-    private Toolbar toolbar;
-    private ActionBar actionbar;
-    private NavigationView navigationView;
     //Declaración de variables
-
+    private Toolbar toolbar;
+    private CollapsingToolbarLayout collapsingToolbarLayout;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+    private int[] tabIcons = { //Iconos de los tab
+            R.drawable.ic_bulletin_board_white_36dp,
+            R.drawable.ic_skull_white_36dp,
+            R.drawable.ic_hanger_white_36dp};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,25 +45,28 @@ public class MainActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
 
+        //Manejo de Facebook
         if(isLoggedIn()==false){ //Inicia la actividad de logging cuando no hay usuario.
             Intent i = new Intent(this,IniciarSesionActivity.class);
             startActivity(i);
         }
-        //MANEJO DE FACEBOOK
+        //Manejo del ViewPager
+        //Declaraciones
+        viewPager = (ViewPager) findViewById(R.id.MainViewPager);
+        tabLayout = (TabLayout) findViewById(R.id.TabLayout);
 
+        viewPager = (ViewPager) findViewById(R.id.MainViewPager);
+        setupViewPager(viewPager);
+
+        tabLayout = (TabLayout) findViewById(R.id.TabLayout);
+        tabLayout.setupWithViewPager(viewPager);
+        setupTabIcons();
+
+        //MANEJO DE LA TOOLBAR
         toolbar = (Toolbar) findViewById(R.id.Toolbar);
         setSupportActionBar(toolbar);
-
-        actionbar = getSupportActionBar(); //Se obtiene el action bar
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp); //Se activa el botón del menú auxiliar
-        actionbar.setDisplayHomeAsUpEnabled(true);
-
-        drawerLayout = (DrawerLayout) findViewById(R.id.NavigationDrawerLayout);
-        navigationView = (NavigationView) findViewById(R.id.NavigationView);
-        if (navigationView != null) {
-            setupNavigationDrawerContent(navigationView);
-        }
-        setupNavigationDrawerContent(navigationView);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout.setTitleEnabled(false);
 
     }
 
@@ -64,62 +78,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                drawerLayout.openDrawer(GravityCompat.START);
-                return true;
+
+        int id = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
         }
+
         return super.onOptionsItemSelected(item);
     }
 
-    //Esta función configura el navigation Drawer
-    private void setupNavigationDrawerContent(NavigationView navigationView) {
-        setFragment(0);
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        switch (menuItem.getItemId()) {
-                            case R.id.item_navigation_drawer_news:
-                                menuItem.setChecked(true);
-                                setFragment(0);
-                                drawerLayout.closeDrawer(GravityCompat.START);
-                                return true;
-                            case R.id.item_navigation_drawer_tatuadores:
-                                menuItem.setChecked(true);
-                                setFragment(1);
-                                drawerLayout.closeDrawer(GravityCompat.START);
-                                return true;
-                            case R.id.item_navigation_drawer_designs:
-                                menuItem.setChecked(true);
-                                setFragment(2);
-                                drawerLayout.closeDrawer(GravityCompat.START);
-                                return true;
-                            case R.id.item_navigation_drawer_info:
-                                menuItem.setChecked(true);
-                                setFragment(3);
-                                drawerLayout.closeDrawer(GravityCompat.START);
-                                return true;
-                            case R.id.item_navigation_drawer_cita:
-                                menuItem.setChecked(true);
-                                setFragment(4);
-                                drawerLayout.closeDrawer(GravityCompat.START);
-                                return true;
-                            case R.id.item_navigation_drawer_settings:
-                                menuItem.setChecked(true);
-                                Toast.makeText(MainActivity.this, "Launching " + menuItem.getTitle().toString(), Toast.LENGTH_SHORT).show();
-                                drawerLayout.closeDrawer(GravityCompat.START);
-                                return true;
-                            case R.id.item_navigation_drawer_help_and_feedback:
-                                menuItem.setChecked(true);
-                                Toast.makeText(MainActivity.this, menuItem.getTitle().toString(), Toast.LENGTH_SHORT).show();
-                                drawerLayout.closeDrawer(GravityCompat.START);
-                                return true;
-                        }
-                        return true;
-                    }
-                });
-    }
 
     //Esta función determinar si el usuario esta loggeado o no
     public boolean isLoggedIn() {
@@ -127,48 +97,46 @@ public class MainActivity extends AppCompatActivity {
         return accessToken != null;
     }
 
-    //Esta función se encarga de administrar los fragments
-    public void setFragment(int position) {
-        FragmentManager fragmentManager;
-        FragmentTransaction fragmentTransaction;
-        switch (position) {
-            case 0:
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                NovedadesFragment novedades = new NovedadesFragment();
-                fragmentTransaction.replace(R.id.MainFragment, novedades);
-                fragmentTransaction.commit();
-                break;
-            case 1:
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                TatuadoresFragment tatuadores = new TatuadoresFragment();
-                fragmentTransaction.replace(R.id.MainFragment, tatuadores);
-                fragmentTransaction.commit();
-                break;
-            case 2:
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                DesignsFragment designs = new DesignsFragment();
-                fragmentTransaction.replace(R.id.MainFragment, designs);
-                fragmentTransaction.commit();
-                break;
-            case 3:
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                InfoFragment info = new InfoFragment();
-                fragmentTransaction.replace(R.id.MainFragment, info);
-                fragmentTransaction.commit();
-                break;
-            case 4:
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                CitaFragment cita = new CitaFragment();
-                fragmentTransaction.replace(R.id.MainFragment, cita);
-                fragmentTransaction.commit();
-                break;
-
-        }
+    private void setupTabIcons() {
+        tabLayout.getTabAt(0).setIcon(tabIcons[0]).setText("News");//Bulleting
+        tabLayout.getTabAt(1).setIcon(tabIcons[1]).setText("Artistas");//Skull
+        tabLayout.getTabAt(2).setIcon(tabIcons[2]).setText("Store");//Information
     }
 
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFrag(new NovedadesFragment(), "NEWS");
+        adapter.addFrag(new TatuadoresFragment(), "ARTISTAS");
+        adapter.addFrag(new StoreFragment(), "STORE");
+        viewPager.setAdapter(adapter);
+    }
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFrag(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+    }
 }

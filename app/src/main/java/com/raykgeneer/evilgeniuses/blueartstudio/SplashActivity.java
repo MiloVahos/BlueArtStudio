@@ -11,7 +11,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -45,8 +44,9 @@ public class SplashActivity extends AppCompatActivity {
         timer.schedule(task, SPLASH_DELAY);
 
         //Se le aplica una pequeña animación al logo
-        ImageView Imagen = (ImageView) findViewById(R.id.ImageV);
-        move(Imagen);
+        //------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Descartado por el momento
+        //ImageView Imagen = (ImageView) findViewById(R.id.ImageV);
+        //move(Imagen);
 
     }
 

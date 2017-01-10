@@ -37,7 +37,6 @@
                 android:id="@+id/Toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:navigationIcon="@drawable/ic_menu_white_24dp"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
         </android.support.design.widget.CollapsingToolbarLayout>

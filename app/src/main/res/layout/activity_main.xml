@@ -1,54 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/NavigationDrawerLayout"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="@bool/fitsSystemWindows">
+    android:fitsSystemWindows="true"
+    tools:context="com.raykgeneer.evilgeniuses.blueartstudio.MainActivity">
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <FrameLayout
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/status_bar_height"
-            android:background="?colorPrimary"/>
+            android:background="@color/black"
+            android:layout_height="150sp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="?attr/colorPrimary"
+            android:fitsSystemWindows="true">
 
-    </LinearLayout>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:layout_gravity="top"
+                android:minHeight="100sp"
+                android:background="@color/black"
+                app:layout_collapseMode="pin"
+                android:elevation="4sp"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:titleMarginTop="2sp"/>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/status_bar_height">
+            <android.support.design.widget.TabLayout
+                android:id="@+id/TabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="80sp"
+                app:tabSelectedTextColor="@color/red"
+                android:layout_gravity="bottom"
+                app:tabTextColor="@color/white"
+                android:elevation="4sp"
+                android:background="@color/black" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/Toolbar"
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:navigationIcon="@drawable/ic_menu_white_24dp"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/ToolbarTheme" />
-        <FrameLayout
-            android:id="@+id/MainFragment"
-            android:layout_width="match_parent"
-            android:layout_marginTop="?actionBarSize"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:id="@+id/MainViewPager">
+        </android.support.v4.view.ViewPager>
 
-    </FrameLayout>
-
-    <android.support.design.widget.NavigationView
-        android:id="@+id/NavigationView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="@bool/fitsSystemWindows"
-        app:headerLayout="@layout/navigation_drawer_header"
-        app:menu="@menu/navigation_drawer_menu"
-        app:theme="@style/NavigationViewTheme" />
-
-</android.support.v4.widget.DrawerLayout>
+</android.support.design.widget.CoordinatorLayout>

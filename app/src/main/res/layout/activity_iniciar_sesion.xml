@@ -1,30 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    android:orientation="vertical"
-    android:layout_gravity="center"
     tools:context="com.raykgeneer.evilgeniuses.blueartstudio.IniciarSesionActivity">
 
-    <ImageView
-        android:layout_width="200sp"
-        android:layout_height="200sp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10sp"
-        android:layout_marginTop="20sp"
-        android:src="@drawable/loriginal"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/SlidesViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-
-    <com.facebook.login.widget.LoginButton
-        android:layout_width="200sp"
+    <CheckBox
+        android:text="@string/Administrador"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10sp"
-        android:layout_gravity="center"
-        android:elevation="4sp"
-        android:id="@+id/Blogin"/>
+        android:id="@+id/CBVisibility"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:buttonTint="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="21dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginBottom="40dp" />
 
+    <EditText
+        android:layout_width="260sp"
+        android:layout_height="40sp"
+        android:background="@drawable/input_outline"
+        android:inputType="textEmailAddress"
+        android:hint="@string/Correo"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:paddingRight="10sp"
+        android:paddingLeft="10sp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60sp"
+        android:layout_marginTop="167dp"
+        android:id="@+id/ECorreo"
+        android:visibility="invisible"/>
 
-</LinearLayout>
+    <EditText
+        android:layout_width="260sp"
+        android:layout_height="40sp"
+        android:background="@drawable/input_outline"
+        android:inputType="textPassword"
+        android:hint="@string/Pass"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:paddingRight="10sp"
+        android:paddingLeft="10sp"
+        android:layout_below="@+id/ECorreo"
+        android:layout_marginLeft="60sp"
+        android:layout_marginTop="31dp"
+        android:id="@+id/EPass"
+        android:visibility="invisible"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:drawableStart="@drawable/facebook_blue_white_icon"
+        android:drawableLeft="@drawable/facebook_blue_white_icon"
+        android:text="@string/Face"
+        android:textSize="25sp"
+        android:paddingStart="5sp"
+        android:paddingLeft="5sp"
+        android:paddingEnd="5sp"
+        android:paddingRight="5sp"
+        android:textColor="@color/white"
+        android:id="@+id/BLoggin"
+        android:layout_marginBottom="56dp"
+        android:layout_above="@+id/CBVisibility"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/IniciarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/BLoggin"
+        android:id="@+id/BIniciarSesion"
+        android:background="@color/md_statusbar_translucent"
+        android:textColor="@color/white"
+        android:layout_alignTop="@+id/BLoggin"
+        android:layout_alignLeft="@+id/BLoggin"
+        android:layout_alignStart="@+id/BLoggin"
+        android:layout_alignRight="@+id/BLoggin"
+        android:layout_alignEnd="@+id/BLoggin"
+        android:visibility="invisible"/>
+
+</RelativeLayout>
 

@@ -16,9 +16,9 @@
             android:icon="@drawable/ic_brush_black_24dp"
             android:title="Diseños" />
         <item
-            android:id="@+id/item_navigation_drawer_info"
-            android:icon="@drawable/ic_info_black_24dp"
-            android:title="Información" />
+            android:id="@+id/item_navigation_drawer_store"
+            android:icon="@drawable/ic_hanger_black_24dp"
+            android:title="Store" />
         <item
             android:id="@+id/item_navigation_drawer_cita"
             android:icon="@drawable/ic_calendar_plus_black_24dp"
@@ -28,9 +28,9 @@
     <item android:title="Help And Feedback">
         <menu>
             <item
-                android:id="@+id/item_navigation_drawer_settings"
+                android:id="@+id/item_navigation_login"
                 android:icon="@mipmap/ic_launcher"
-                android:title="Settings" />
+                android:title="Iniciar Sesión" />
             <item
                 android:id="@+id/item_navigation_drawer_help_and_feedback"
                 android:icon="@mipmap/ic_launcher"

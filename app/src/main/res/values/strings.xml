@@ -8,5 +8,28 @@
     <string name="Origen">Lugar de origen: </string>
     <string name="Estilo">Estilos: </string>
     <string name="Descripcion">Descripción: </string>
+    <string name="Face">Facebook</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings Related to Settings Activity -->
+    <string name="Logout">FACEBOOK LOGOUT</string>
+
+
+    <string name="Originario">Originario de:</string>
+
+    <!--STRINGS PARA INICIAR SESIÓN ACTIVITY-->
+    <string name="Administrador">Soy Administrador o Tatuador</string>1
+    <string name="Correo">Digite su correo electrónico</string>
+    <string name="Pass">Digite su contraseña</string>
+    <string name="IniciarSesion">Iniciar Sesión</string>
+
+    <!--STRINGS PARA TOASTS-->
+    <string name="CamposVacios">Uno o más campos obligatorios estan vacios...</string>
+
+    <!--STRINGS PARA NEWS FRAGMENT -->
+    <string name="Title">Título: </string>
+    <string name="Description">Descripción: </string>
+    <string name="Post">SUBMIT POST</string>
+
 
 </resources>
